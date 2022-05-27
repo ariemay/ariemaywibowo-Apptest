@@ -4,14 +4,19 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android-dev": "react-native run-android --variant=dev",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-native": "0.68.2",
+    "react-native-config": "^1.4.5",
+    "react-redux": "^8.0.2",
+    "redux-toolkit": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -19,6 +24,7 @@
     "@react-native-community/eslint-config": "^3.0.2",
     "babel-jest": "^28.1.0",
     "eslint": "^8.16.0",
+    "flow": "^0.2.3",
     "jest": "^28.1.0",
     "metro-react-native-babel-preset": "^0.71.0",
     "react-test-renderer": "17.0.2"
