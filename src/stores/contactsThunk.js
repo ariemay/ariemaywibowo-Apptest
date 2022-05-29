@@ -1,39 +1,43 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import {Request} from '../utils/Interfaces';
-import {api} from '../helpers/api';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Request } from '../utils/Interfaces';
+import { api } from '../helpers/api';
 
-// First, create the thunk
-const fetchContacts = createAsyncThunk(
-    'contacts/fetchContacts',
-    async (req: Request, thunkAPI) => {
-        await api(req, (v) => {
-            return v.data
-        })
-    }
-)
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchContacts',
+  async (param: Request, thunkAPI) => {
+    const response = await api(param);
+    return response;
+  },
+);
 
-interface UsersState {
-    entities: []
-    loading: 'idle' | 'pending' | 'succeeded' | 'failed'
-}
+export const fetchSaveContact = createAsyncThunk(
+  'contacts/fetchSaveContacts',
+  async (param: Request, thunkAPI) => {
+    const response = await api(param);
+    return response;
+  },
+);
 
-const initialState = {
-    entities: [],
-    loading: 'idle',
-} as UsersState
+export const fetchUpdateContact = createAsyncThunk(
+  'contacts/fetchUpdateContact',
+  async (param: Request, thunkAPI) => {
+    const response = await api(param);
+    return response;
+  },
+);
 
-// Then, handle actions in your reducers:
-const usersSlice = createSlice({
-    name: 'users',
-    initialState,
-    reducers: {
-        // standard reducer logic, with auto-generated action types per reducer
-    },
-    extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(fetchContacts.fulfilled, (state, action) => {
-            // Add user to the state array
-            state.entities.push(action.payload)
-        })
-    },
-})
+export const fetchDeleteContact = createAsyncThunk(
+  'contacts/fetchDeleteContact',
+  async (param: Request, thunkAPI) => {
+    const response = await api(param);
+    return response;
+  },
+);
+
+export const fetchSpecificUser = createAsyncThunk(
+  'contacts/fetchSpecificUser',
+  async (param: Request, thunkAPI) => {
+    const response = await api(param);
+    return response;
+  },
+);
