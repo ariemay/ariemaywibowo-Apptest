@@ -1,7 +1,7 @@
 import React, { Node } from "react";
 import {Text, View} from 'react-native';
 
-const HomeView = (): Node => {
+const AddNewContactView = (): Node => {
     return (
         <View>
             <Text>test</Text>
@@ -9,4 +9,4 @@ const HomeView = (): Node => {
     )
 }
 
-export default HomeView;
+export default AddNewContactView;

@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 
 apply from: project(":react-native-config").projectDir.getPath() + "/dotenv.gradle"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -88,11 +89,11 @@ apply from: "../../node_modules/react-native/react.gradle"
 
 
 project.ext.envConfigFiles = [
-        release: ".env.development.production",
-        dev: ".env.development.development",
+        release: ".env.production",
+        dev: ".env.development",
 // Also you can different types of environments,
         // for example staging.
-        stage: ".env.development.staging",
+        stage: ".env.staging",
 ];
 
 /**

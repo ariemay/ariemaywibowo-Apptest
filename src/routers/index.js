@@ -1,15 +1,21 @@
+import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, TouchableOpacity } from 'react-native';
-import HomeView from '../views/HomeView';
+import AddNewContactView from '../views/AddNewContactView';
 import ContactListView from '../views/ContactListView';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Tab = createBottomTabNavigator();
 
 export function Routers() {
     return (
-        <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
-            <Tab.Screen name="Home" component={HomeView} />
-            <Tab.Screen name="Settings" component={ContactListView} />
+        <Tab.Navigator tabBar={props => <MyTabBar {...props} />} defaultScreenOptions={{
+            tabBarActiveBackgroundColor: Colors.green,
+            tabBarInactiveBackgroundColor: Colors.gray
+        }}>
+            <Tab.Screen name="Contact List" component={ContactListView} />
+            <Tab.Screen name="Add New Contact" component={AddNewContactView}/>
         </Tab.Navigator>
     );
 }
@@ -25,6 +31,7 @@ function MyTabBar({ state, descriptors, navigation }) {
                         : options.title !== undefined
                             ? options.title
                             : route.name;
+                const icon = route.name === "Contact List" ? "home" : "plus" ;
 
                 const isFocused = state.index === index;
 
@@ -56,9 +63,10 @@ function MyTabBar({ state, descriptors, navigation }) {
                         testID={options.tabBarTestID}
                         onPress={onPress}
                         onLongPress={onLongPress}
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, alignItems: "center", justifyContent: "center", height: 50, backgroundColor: isFocused ? "gray" : "white" }}
                     >
-                        <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
+                        <FontAwesome5 name={icon} color={isFocused ? "white" : "black"} solid/>
+                        <Text style={{ color: isFocused ? 'white' : '#222' }}>
                             {label}
                         </Text>
                     </TouchableOpacity>
